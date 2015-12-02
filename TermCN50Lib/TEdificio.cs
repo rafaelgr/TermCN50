@@ -10,6 +10,7 @@ namespace TermCN50Lib
     {
         private int _edificioId;
         private string _nombre;
+        private int _grupoId;
 
         public string nombre
         {
@@ -22,6 +23,12 @@ namespace TermCN50Lib
             get { return _edificioId; }
             set { _edificioId = value; }
         }
+
+        public int grupoId
+        {
+            get { return _grupoId; }
+            set { _grupoId = value; }
+        }
     }
     public static partial class CntFCN50
     {
@@ -30,6 +37,7 @@ namespace TermCN50Lib
             TEdificio edif = new TEdificio();
             edif.edificioId = dr.GetInt32(0);
             edif.nombre = dr.GetString(1);
+            edif.grupoId = dr.GetInt32(2);
             return edif;
         }
 
@@ -62,15 +70,15 @@ namespace TermCN50Lib
             string sql = "";
             if (edificio != null)
             {
-                sql = @"UPDATE edificios SET nombre = '{1}'
+                sql = @"UPDATE edificios SET nombre = '{1}', grupoId = {2}
                         WHERE edificioId = {0}";
             }
             else
             {
-                sql = @"INSERT INTO edificios (edificioId, nombre)
-                        VALUES({0},'{1}')";
+                sql = @"INSERT INTO edificios (edificioId, nombre, grupoId)
+                        VALUES({0},'{1}', {2})";
             }
-            sql = String.Format(sql, edif.edificioId, edif.nombre);
+            sql = String.Format(sql, edif.edificioId, edif.nombre, edif.grupoId);
             using (SqlCeCommand cmd = conn.CreateCommand())
             {
                 cmd.CommandText = sql;

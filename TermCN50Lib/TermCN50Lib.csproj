@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CN50General.cs" />
+    <Compile Include="CN50DescargasLineas.cs" />
     <Compile Include="CN50Terminales.cs" />
     <Compile Include="CN50Puntos.cs" />
     <Compile Include="CN50Rondas.cs" />
@@ -61,6 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TAdministrador.cs" />
     <Compile Include="TCN50.cs" />
+    <Compile Include="TDescargaLinea.cs" />
     <Compile Include="TRondaPunto.cs" />
     <Compile Include="TRonda.cs" />
     <Compile Include="TPunto.cs" />
